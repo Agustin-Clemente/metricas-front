@@ -1,0 +1,5 @@
+{
+  "name": "Body Metrics Tracker",
+  "description": "An application to log and visualize body measurement data including weight, body fat, hydration, muscle mass, and BMI. It features charts to track progress over time with filters and data management capabilities.",
+  "requestFramePermissions": []
+}
