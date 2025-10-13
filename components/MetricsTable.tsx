@@ -1,4 +1,3 @@
-
 import React from 'react';
 import type { Metric } from '../types';
 
@@ -20,6 +19,9 @@ const MetricsTable: React.FC<MetricsTableProps> = ({ metrics, onEdit, onDelete }
         return <p className="text-center text-gray-400 mt-4">No se encontraron registros. ¡Añade uno para empezar!</p>;
     }
 
+    // Crear una copia ordenada del array metrics
+    const sortedMetrics = [...metrics].sort((a, b) => new Date(b.fecha).getTime() - new Date(a.fecha).getTime());
+
     return (
         <div className="overflow-x-auto">
             <table className="min-w-full divide-y divide-gray-700">
@@ -37,7 +39,7 @@ const MetricsTable: React.FC<MetricsTableProps> = ({ metrics, onEdit, onDelete }
                     </tr>
                 </thead>
                 <tbody className="bg-gray-800 divide-y divide-gray-700">
-                    {metrics.map((metric) => (
+                    {sortedMetrics.map((metric) => (
                         <tr key={metric._id} className="hover:bg-gray-700/50">
                             <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-white">{formatDate(metric.fecha)}</td>
                             <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300">{metric.peso} kg</td>
